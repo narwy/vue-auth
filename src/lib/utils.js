@@ -73,7 +73,7 @@ function compare(one, two) {
 
 function isLocalStorage() {
     try {
-        if (window.localStorage || typeof localStorage !== 'undefined') {
+        if (window.localStorage && typeof localStorage !== 'undefined') {
             localStorage.setItem('storage_test', 1);
             localStorage.removeItem('storage_test');
             return true;
@@ -87,7 +87,7 @@ function isLocalStorage() {
 
 function isSessionStorage() {
     try {
-        if (window.sessionStorage || typeof sessionStorage !== 'undefined') {
+        if (window.sessionStorage && typeof sessionStorage !== 'undefined') {
             sessionStorage.setItem('storage_test', 1);
             sessionStorage.removeItem('storage_test');
             return true;
