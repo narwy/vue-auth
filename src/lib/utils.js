@@ -73,14 +73,13 @@ function compare(one, two) {
 
 function isLocalStorage() {
     try {
-        if (!window.localStorage) {
-            throw 'exception';
+        if (window.localStorage || typeof localStorage !== 'undefined') {
+            localStorage.setItem('storage_test', 1);
+            localStorage.removeItem('storage_test');
+            return true;
         }
-
-        localStorage.setItem('storage_test', 1);
-        localStorage.removeItem('storage_test');
         
-        return true;
+        throw 'exception';
     } catch (e) {
         return false;
     }
@@ -88,14 +87,13 @@ function isLocalStorage() {
 
 function isSessionStorage() {
     try {
-        if (!window.sessionStorage) {
-            throw 'exception';
+        if (window.sessionStorage || typeof sessionStorage !== 'undefined') {
+            sessionStorage.setItem('storage_test', 1);
+            sessionStorage.removeItem('storage_test');
+            return true;
         }
 
-        sessionStorage.setItem('storage_test', 1);
-        sessionStorage.removeItem('storage_test');
-
-        return true;
+        throw 'exception';
     } catch (e) {
         return false;
     }
